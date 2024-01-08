@@ -1,0 +1,26 @@
+{
+  "name": "gitrover",
+  "version": "0.0.0",
+  "description": "The better GitHub CLI we all needed",
+  "main": "./dist/index.js",
+  "bin": {
+    "gr": "./dist/index.js",
+    "grover": "./dist/index.js",
+    "gitrover": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "tsc"
+  },
+  "keywords": [],
+  "author": "ToastedToast <hey@toasted.dev>",
+  "license": "MIT",
+  "dependencies": {
+    "@changesets/cli": "^2.27.1",
+    "isomorphic-unfetch": "^4.0.2",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
