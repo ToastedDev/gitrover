@@ -9,11 +9,17 @@ export const logoutHandler = async () => {
     process.exit(1);
   }
 
-  const octokit = new Octokit({
-    auth: config.accessToken,
-  });
-  const { data } = await octokit.rest.users.getAuthenticated();
-
-  setUserConfig({});
-  console.log(chalk.green("✓"), "Logged out of", data.login + ".");
+  let username: string | undefined = undefined;
+  try {
+    const octokit = new Octokit({
+      auth: config.accessToken,
+    });
+    const { data } = await octokit.rest.users.getAuthenticated();
+    username = data.login;
+  } catch {}
+  await setUserConfig({});
+  console.log(
+    chalk.green("✓"),
+    username ? `Logged out of ${username}.` : "Logged out."
+  );
 };
