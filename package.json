@@ -19,9 +19,21 @@
   "license": "MIT",
   "dependencies": {
     "@changesets/cli": "^2.27.1",
+    "@clack/core": "^0.3.3",
     "@clack/prompts": "^0.7.0",
+    "@octokit/auth-oauth-device": "^6.0.1",
+    "@octokit/core": "^5.0.2",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "env-paths": "^3.0.0",
+    "fs-extra": "^11.2.0",
     "isomorphic-unfetch": "^4.0.2",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.10.7",
+    "type-fest": "^4.9.0"
   }
 }
