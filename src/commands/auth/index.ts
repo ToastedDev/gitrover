@@ -1,8 +1,13 @@
 import { Command } from "commander";
 import { loginHandler } from "./login.js";
+import { logoutHandler } from "./logout.js";
 
 export const authCommands = new Command().name("auth");
 authCommands
   .command("login")
-  .description("Authenticate with a GitHub host.")
+  .description("Login to GitHub for use with GitRover.")
   .action(loginHandler);
+authCommands
+  .command("logout")
+  .description("Logout of GitHub for GitRover.")
+  .action(logoutHandler);
