@@ -7,7 +7,7 @@ export const loginHandler = async () => {
   const auth = createOAuthDeviceAuth({
     clientType: "oauth-app",
     clientId: GITHUB_CLIENT_ID,
-    scopes: ["repo", "repo:org", "gist"],
+    scopes: ["repo", "read:org", "gist"],
     onVerification: (verification) => {
       console.log("Login code:", verification.user_code);
       console.log(
