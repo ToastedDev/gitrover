@@ -1,5 +1,8 @@
 # gitrover
 
+> [!CAUTION]
+> This is a very work in progress thing. Don't expect _everything_ to work 100%.
+
 The better [GitHub CLI](https://github.com/cli/cli) we all needed.
 
 ## Installation
