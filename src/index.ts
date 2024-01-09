@@ -1,7 +1,5 @@
 import "isomorphic-unfetch";
-
-import { intro, outro, text } from "@clack/prompts";
-import { commandHandler } from "./commands";
+import { commandHandler } from "./commands/index.js";
 
 const main = async () => {
   commandHandler();
