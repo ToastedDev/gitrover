@@ -84,7 +84,7 @@ export const loginHandler = async () => {
           )} in your browser yourself.`
         );
         keypress(process.stdin);
-        process.stdin.on("keypress", (ch, key) => {
+        process.stdin.on("keypress", (_, key) => {
           if (key) {
             if (key.ctrl && key.name == "c") {
               process.stdin.pause();

@@ -7,7 +7,6 @@ import {
   isGitRepository,
   remoteUrl,
   execGitCommandSync,
-  execGitCommand,
 } from "~/utils/git.js";
 
 export const createAndPushHandler = async (octokit: Octokit) => {
