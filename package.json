@@ -9,8 +9,12 @@
     "gitrover": "./dist/index.js"
   },
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
+    "release": "pnpm run build && changeset publish",
     "dev": "tsup --watch",
     "lint": "tsc"
   },
