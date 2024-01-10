@@ -3,6 +3,7 @@ import { createOAuthDeviceAuth } from "@octokit/auth-oauth-device";
 import { getUserConfig, setUserConfig } from "~/utils/user-config.js";
 import chalk from "chalk";
 import open from "open";
+// @ts-expect-error package doesn't have types (not even definetlytyped, I checked)
 import keypress from "keypress";
 
 export const loginHandler = async () => {
