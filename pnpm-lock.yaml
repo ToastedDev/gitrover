@@ -17,6 +17,9 @@ dependencies:
   '@octokit/core':
     specifier: ^5.0.2
     version: 5.0.2
+  '@octokit/request-error':
+    specifier: ^5.0.1
+    version: 5.0.1
   '@octokit/rest':
     specifier: ^20.0.2
     version: 20.0.2
