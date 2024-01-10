@@ -1,11 +1,19 @@
 import { GITHUB_CLIENT_ID } from "~/consts.js";
 import { createOAuthDeviceAuth } from "@octokit/auth-oauth-device";
-import { setUserConfig } from "~/utils/user-config.js";
+import { getUserConfig, setUserConfig } from "~/utils/user-config.js";
 import chalk from "chalk";
 import open from "open";
 import keypress from "keypress";
 
 export const loginHandler = async () => {
+  if ((await getUserConfig()).accessToken) {
+    console.log(
+      chalk.red("x"),
+      "You're already logged in. You don't need to login again."
+    );
+    process.exit(1);
+  }
+
   const auth = createOAuthDeviceAuth({
     clientType: "oauth-app",
     clientId: GITHUB_CLIENT_ID,
