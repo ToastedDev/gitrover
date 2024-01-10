@@ -5,7 +5,7 @@ import { repoCommand } from "./repo/index.js";
 
 export const commandHandler = async () => {
   const program = new Command()
-    .name("gitrover")
+    .name("gr")
     .description("The better GitHub CLI we all needed")
     .version(getVersion(), "-v, --version", "Display the current version");
 
