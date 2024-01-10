@@ -8,5 +8,4 @@ export default defineConfig({
   format: ["esm"],
   minify: !isDev,
   outDir: "dist",
-  onSuccess: isDev ? "node dist/index.js" : undefined,
 });
