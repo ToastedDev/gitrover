@@ -83,6 +83,4 @@ export const createAndPushHandler = async (octokit: Octokit) => {
   }
 
   console.log(chalk.green("✓"), `Created repository ${repoOwner}/${repoName}.`);
-
-  // TOOD: push to upstream
 };

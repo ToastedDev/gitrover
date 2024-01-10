@@ -28,6 +28,8 @@
     "env-paths": "^3.0.0",
     "fs-extra": "^11.2.0",
     "isomorphic-unfetch": "^4.0.2",
+    "keypress": "^0.2.1",
+    "open": "^10.0.3",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
