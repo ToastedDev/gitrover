@@ -3,7 +3,7 @@ import { getUserConfig } from "~/utils/user-config.js";
 import { select } from "@inquirer/prompts";
 import { Octokit } from "@octokit/rest";
 import { createAndPushHandler } from "./push.js";
-import { gitRepoHasOrigin, isGitRepository } from "~/utils/is-git.js";
+import { gitRepoHasOrigin, isGitRepository } from "~/utils/git.js";
 
 export const createRepoHandler = async () => {
   const config = await getUserConfig();
@@ -19,7 +19,7 @@ export const createRepoHandler = async () => {
     auth: config.accessToken,
   });
 
-  if (isGitRepository() && gitRepoHasOrigin())
+  if (isGitRepository() && !gitRepoHasOrigin())
     return createAndPushHandler(octokit);
 
   const action = await select({

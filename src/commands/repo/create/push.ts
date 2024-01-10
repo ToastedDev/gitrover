@@ -1,8 +1,14 @@
-import { input, select } from "@inquirer/prompts";
+import { confirm, input, select } from "@inquirer/prompts";
 import { Octokit } from "@octokit/rest";
 import chalk from "chalk";
 import path from "path";
-import { isGitRepository } from "~/utils/is-git.js";
+import {
+  gitRepoHasOrigin,
+  isGitRepository,
+  remoteUrl,
+  execGitCommandSync,
+  execGitCommand,
+} from "~/utils/git.js";
 
 export const createAndPushHandler = async (octokit: Octokit) => {
   // fix for dumb inquirer behaviours
@@ -83,4 +89,44 @@ export const createAndPushHandler = async (octokit: Octokit) => {
   }
 
   console.log(chalk.green("✓"), `Created repository ${repoOwner}/${repoName}.`);
+
+  let remoteName = "origin";
+
+  if (gitRepoHasOrigin()) {
+    const shouldStillAddRemote = await confirm({
+      message:
+        "It seems you already have a remote called 'origin'. Do you still wanna create a remote?",
+    });
+    if (!shouldStillAddRemote) {
+      console.log(
+        chalk.red("x"),
+        "Cancelled creating a remote.\nIf you want to create the remote yourself, you can run `git remote add`."
+      );
+      process.exit(1);
+    }
+
+    remoteName = await input({
+      message: "What do you want your remote to be called?",
+      validate: (value) => {
+        if (value === "origin") return "Cannot be 'origin'";
+        return value;
+      },
+    });
+  }
+
+  execGitCommandSync([
+    "remote",
+    "add",
+    remoteName,
+    await remoteUrl(repoOwner, repoName),
+  ]);
+
+  // TODO: check if repo has commits, and don't push if no commits
+  execGitCommandSync(["push", "--set-upstream", remoteName, "HEAD"], {
+    stdio: "ignore",
+  });
+  console.log(
+    chalk.green("✓"),
+    `Pushed commits to repository ${repoOwner}/${repoName}.`
+  );
 };

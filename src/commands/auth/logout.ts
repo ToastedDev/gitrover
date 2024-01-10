@@ -17,7 +17,7 @@ export const logoutHandler = async () => {
     const { data } = await octokit.rest.users.getAuthenticated();
     username = data.login;
   } catch {}
-  await setUserConfig({});
+  await setUserConfig({ accessToken: undefined });
   console.log(
     chalk.green("✓"),
     username ? `Logged out of ${username}.` : "Logged out."
