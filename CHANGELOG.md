@@ -1,5 +1,22 @@
 # gitrover
 
+## 0.0.3
+
+### Patch Changes
+
+- 6f4d5df: Add creating repositories from scratch.
+- 6f4d5df: Add flags for `gr repo create`.
+
+  ```bash
+  # create a repository from scratch
+  gr repo create -s
+  gr repo create --scratch
+
+  # create a repository and push a local repository
+  gr repo create -p
+  gr repo create --push
+  ```
+
 ## 0.0.2
 
 ### Patch Changes
