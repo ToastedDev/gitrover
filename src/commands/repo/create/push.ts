@@ -1,7 +1,6 @@
-import { confirm, input, select } from "@inquirer/prompts";
+import { confirm, input } from "@inquirer/prompts";
 import { Octokit } from "@octokit/rest";
 import chalk from "chalk";
-import path from "path";
 import {
   gitRepoHasOrigin,
   isGitRepository,

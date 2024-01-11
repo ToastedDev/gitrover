@@ -2,7 +2,6 @@ import { Octokit } from "@octokit/rest";
 import { execGitCommandSync, remoteUrl } from "~/utils/git.js";
 import { getUserConfig } from "~/utils/user-config.js";
 import { RequestError } from "@octokit/request-error";
-import chalk from "chalk";
 import { error } from "~/utils/logger.js";
 
 export const cloneRepoHandler = async (
