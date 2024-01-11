@@ -17,7 +17,7 @@ export const renderVersionWarning = (npmVersion: string) => {
     );
     console.log(
       "Please run",
-      chalk.bold("npm install -g gitrover"),
+      chalk.bold("npm install -g gitrover@latest"),
       "to get the latest updates."
     );
     console.log("");
