@@ -1,11 +1,15 @@
 import { Octokit } from "@octokit/rest";
 import chalk from "chalk";
+import { error, success } from "~/utils/logger.js";
 import { getUserConfig, setUserConfig } from "~/utils/user-config.js";
 
 export const logoutHandler = async () => {
   const config = await getUserConfig();
   if (!config.accessToken) {
-    console.log(chalk.red("x"), "You're not logged in.");
+    error(
+      "You're not logged in.\nTo login, run",
+      chalk.bold("gr auth login") + "."
+    );
     process.exit(1);
   }
 
@@ -18,8 +22,5 @@ export const logoutHandler = async () => {
     username = data.login;
   } catch {}
   await setUserConfig({ accessToken: undefined });
-  console.log(
-    chalk.green("✓"),
-    username ? `Logged out of ${username}.` : "Logged out."
-  );
+  success(username ? `Logged out of ${username}.` : "Logged out.");
 };

@@ -3,6 +3,7 @@ import { execGitCommandSync, remoteUrl } from "~/utils/git.js";
 import { getUserConfig } from "~/utils/user-config.js";
 import { RequestError } from "@octokit/request-error";
 import chalk from "chalk";
+import { error } from "~/utils/logger.js";
 
 export const cloneRepoHandler = async (
   source: string,
@@ -29,10 +30,7 @@ export const cloneRepoHandler = async (
     });
   } catch (err) {
     if (err instanceof RequestError && err.status === 404) {
-      console.log(
-        chalk.red("x"),
-        `Repository ${owner}/${name} does not exist.`
-      );
+      error(`Repository ${owner}/${name} does not exist.`);
       process.exit(1);
     }
     console.error(err);

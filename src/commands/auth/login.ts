@@ -14,13 +14,14 @@ import { Octokit } from "@octokit/rest";
 // @ts-expect-error package doesn't have types (not even definetlytyped, I checked)
 import keypress from "keypress";
 import path from "path";
+import { success, error, important } from "~/utils/logger.js";
 
 export const loginHandler = async () => {
+  // fix for dumb inquirer behaviours
+  process.on("exit", () => process.exit());
+
   if ((await getUserConfig()).accessToken) {
-    console.log(
-      chalk.red("x"),
-      "You're already logged in. You don't need to login again."
-    );
+    error("You're already logged in. You don't need to login again.");
     process.exit(1);
   }
 
@@ -71,11 +72,7 @@ export const loginHandler = async () => {
     clientId: GITHUB_CLIENT_ID,
     scopes,
     onVerification: (verification) => {
-      console.log(
-        chalk.yellow("!"),
-        "Login code:",
-        chalk.bold(verification.user_code)
-      );
+      important("Login code:", chalk.bold(verification.user_code));
       if (process.stdout.isTTY) {
         console.log(`Press ${chalk.bold("Enter")} to verify in your browser.`);
         console.log(
@@ -117,7 +114,7 @@ export const loginHandler = async () => {
   });
   const { data: currentUser } = await octokit.rest.users.getAuthenticated();
 
-  console.log(chalk.green("✓"), "Logged in as", currentUser.login + ".");
+  success("Logged in as", currentUser.login + ".");
 
   if (sshKeyToUpload) {
     const sshKey = getPublicKey(sshKeyToUpload);
@@ -129,8 +126,7 @@ export const loginHandler = async () => {
         per_page: 100,
       });
     if (sshKeys.find((key) => key.key === keyToCompare)) {
-      console.log(
-        chalk.red("x"),
+      error(
         "SSH key",
         chalk.bold(path.join(sshDirectory, sshKeyToUpload)),
         "already exists on your GitHub account."
@@ -140,8 +136,7 @@ export const loginHandler = async () => {
         title: "GitRover CLI",
         key: sshKey,
       });
-      console.log(
-        chalk.green("✓"),
+      success(
         "SSH key",
         chalk.bold(path.join(sshDirectory, sshKeyToUpload)),
         "uploaded to your GitHub account."

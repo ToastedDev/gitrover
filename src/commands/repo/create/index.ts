@@ -1,16 +1,20 @@
-import chalk from "chalk";
 import { getUserConfig } from "~/utils/user-config.js";
 import { select } from "@inquirer/prompts";
 import { Octokit } from "@octokit/rest";
 import { createAndPushHandler } from "./push.js";
 import { gitRepoHasOrigin, isGitRepository } from "~/utils/git.js";
+import { error } from "~/utils/logger.js";
+import chalk from "chalk";
 
 export const createRepoHandler = async () => {
+  // fix for dumb inquirer behaviours
+  process.on("exit", () => process.exit());
+
   const config = await getUserConfig();
   if (!config.accessToken) {
-    console.log(
-      chalk.red("x"),
-      "You're not logged in.\nTo be able to start using gitrover, run `gr auth login`."
+    error(
+      "You're not logged in.\nTo login, run",
+      chalk.bold("gr auth login") + "."
     );
     process.exit(1);
   }

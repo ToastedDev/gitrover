@@ -8,6 +8,7 @@ import {
   remoteUrl,
   execGitCommandSync,
 } from "~/utils/git.js";
+import { error, success } from "~/utils/logger.js";
 
 export const createAndPushHandler = async (octokit: Octokit) => {
   // fix for dumb inquirer behaviours
@@ -15,9 +16,9 @@ export const createAndPushHandler = async (octokit: Octokit) => {
 
   // TODO: allow the user to select where the repo is if the current directory isn't a git repo
   if (!isGitRepository()) {
-    console.log(
-      chalk.red("x"),
-      "You are not in a git repository.\nInitialize a git repository with `git init`."
+    error(
+      "You are not in a git repository.\nInitialize a git repository with",
+      chalk.bold("git init") + "."
     );
     process.exit(1);
   }
@@ -87,7 +88,7 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     });
   }
 
-  console.log(chalk.green("✓"), `Created repository ${repoOwner}/${repoName}.`);
+  success(`Created repository ${chalk.bold(`${repoOwner}/${repoName}`)}.`);
 
   let remoteName = "origin";
 
@@ -97,9 +98,9 @@ export const createAndPushHandler = async (octokit: Octokit) => {
         "It seems you already have a remote called 'origin'. Do you still wanna create a remote?",
     });
     if (!shouldStillAddRemote) {
-      console.log(
-        chalk.red("x"),
-        "Cancelled creating a remote.\nIf you want to create the remote yourself, you can run `git remote add`."
+      error(
+        "Cancelled creating a remote.\nIf you want to create the remote yourself, you can run",
+        chalk.bold("git remote add") + "."
       );
       process.exit(1);
     }
@@ -124,8 +125,7 @@ export const createAndPushHandler = async (octokit: Octokit) => {
   execGitCommandSync(["push", "--set-upstream", remoteName, "HEAD"], {
     stdio: "ignore",
   });
-  console.log(
-    chalk.green("✓"),
-    `Pushed commits to repository ${repoOwner}/${repoName}.`
+  success(
+    `Pushed commits to repository ${chalk.bold(`${repoOwner}/${repoName}`)}.`
   );
 };
