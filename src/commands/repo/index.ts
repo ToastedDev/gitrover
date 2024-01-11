@@ -7,6 +7,12 @@ export const repoCommand = new Command()
   .description("Manage your GitHub repository.");
 repoCommand
   .command("create")
+  .option("-s, --scratch", "Create a repository on GitHub from scratch.", false)
+  .option(
+    "-p, --push",
+    "Create a repository on GitHub and push a local repository.",
+    false
+  )
   .description("Create a repository on GitHub.")
   .action(createRepoHandler);
 repoCommand

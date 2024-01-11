@@ -10,11 +10,11 @@ import open from "open";
 import { select } from "@inquirer/prompts";
 import { getPublicKey, getPublicKeys, sshDirectory } from "~/utils/ssh.js";
 import { Octokit } from "@octokit/rest";
+import path from "path";
+import { success, error, important } from "~/utils/logger.js";
 
 // @ts-expect-error package doesn't have types (not even definetlytyped, I checked)
 import keypress from "keypress";
-import path from "path";
-import { success, error, important } from "~/utils/logger.js";
 
 export const loginHandler = async () => {
   // fix for dumb inquirer behaviours

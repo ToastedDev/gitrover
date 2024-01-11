@@ -9,6 +9,7 @@ import {
   execGitCommandSync,
 } from "~/utils/git.js";
 import { error, success } from "~/utils/logger.js";
+import { askForRepoInfo } from "./index.js";
 
 export const createAndPushHandler = async (octokit: Octokit) => {
   // fix for dumb inquirer behaviours
@@ -23,72 +24,23 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     process.exit(1);
   }
 
-  const parsedCwd = path.resolve(process.cwd());
-  const repoName = await input({
-    message: "Repository name",
-    default: path.basename(parsedCwd),
-  });
+  const { owner, name, visibility, inOrg } = await askForRepoInfo(octokit);
 
-  const { data: currentUser } = await octokit.users.getAuthenticated();
-  const { data: orgs } = await octokit.orgs.listForAuthenticatedUser();
-
-  let repoOwner: string | undefined;
-  if (orgs.length > 1) {
-    repoOwner = await select({
-      message: "Repository owner",
-      default: currentUser.login,
-      choices: [
-        {
-          name: currentUser.login,
-          value: currentUser.login,
-        },
-        ...orgs
-          .sort((a, b) => a.login.localeCompare(b.login))
-          .map((org) => ({
-            name: org.login,
-            value: org.login,
-          })),
-      ],
-    });
-  } else {
-    repoOwner = currentUser.login;
-  }
-
-  const repoVisibility = await select({
-    message: "Visibility",
-    default: "public",
-    choices: [
-      {
-        name: "Public",
-        value: "public",
-      },
-      {
-        name: "Private",
-        value: "private",
-      },
-      // TODO: I have no idea what this does but we should probably implement it at some point
-      // {
-      //   name: "Internal",
-      //   value: "internal",
-      // },
-    ],
-  });
-
-  if (repoOwner !== currentUser.login) {
+  if (!inOrg) {
     await octokit.repos.createInOrg({
-      org: repoOwner,
-      name: repoName,
-      private: repoVisibility === "private",
+      org: owner,
+      name,
+      private: visibility === "private",
     });
   } else {
     await octokit.repos.createForAuthenticatedUser({
-      org: repoOwner,
-      name: repoName,
-      private: repoVisibility === "private",
+      org: owner,
+      name,
+      private: visibility === "private",
     });
   }
 
-  success(`Created repository ${chalk.bold(`${repoOwner}/${repoName}`)}.`);
+  success(`Created repository ${chalk.bold(`${owner}/${name}`)}.`);
 
   let remoteName = "origin";
 
@@ -118,14 +70,12 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     "remote",
     "add",
     remoteName,
-    await remoteUrl(repoOwner, repoName),
+    await remoteUrl(owner, name),
   ]);
 
   // TODO: check if repo has commits, and don't push if no commits
   execGitCommandSync(["push", "--set-upstream", remoteName, "HEAD"], {
     stdio: "ignore",
   });
-  success(
-    `Pushed commits to repository ${chalk.bold(`${repoOwner}/${repoName}`)}.`
-  );
+  success(`Pushed commits to repository ${chalk.bold(`${owner}/${name}`)}.`);
 };
