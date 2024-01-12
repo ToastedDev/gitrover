@@ -1,0 +1,33 @@
+---
+title: What is GitRover?
+category: getting-started
+---
+
+import Quote from "../../components/docs/quote.astro";
+
+GitRover is a CLI built to be a better version of GitHub's own CLI.
+
+## What is the GitHub CLI?
+
+The GitHub CLI is meant to be a way to have GitHub integrated into your terminal. It allows you to create repositories, create and merge pull requests, and more, all without leaving your terminal. You can learn more about it at [cli.github.com](https://cli.github.com).
+
+## What's the problem with the GitHub CLI?
+
+As mentioned by [Theo Browne](https://youtube.com/@t3dotgg) in his [video about the GitHub CLI](https://www.youtube.com/live/qUo1cvLzOCA?t=14547&si=w5TBpboP7vS8caJ), there are a lot of strange UX decisions with the GitHub CLI which make us think if it's even made for developers.
+
+<Quote
+  name="Theo Browne"
+  handle="@t3dotgg"
+  href="https://github.com/t3dotgg"
+  avatar="https://github.com/t3dotgg.png"
+>
+  "The GitHub CLI, as an experience that developers have when they work every
+  day, is not a thing that anyone worked on. Nobody has put thought into the
+  actual experience of using this, they've just checked all of the boxes of the
+  API. [...] There is no reason for the GitHub CLI to be so ignorant of what I'm
+  actually doing when I use it, it's pretty obvious based on what I'm doing in
+  the contents of the folder what my intent is as a GitHub user, but rather than
+  even try, they make me toggle every single possible flag as I go down."
+</Quote>
+
+As it stands right now, it seems the GitHub CLI is just made as a way to interface with the API, not for actual use by developers in their everyday workflow, which is why we made GitRover. It's meant to be a GitHub CLI made by developers for developers, not by backend enginners for their bosses.

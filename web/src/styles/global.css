@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  @apply bg-orange-800;
+}
+
+@layer base {
+  .markdown {
+    @apply flex w-full flex-col items-start justify-start leading-relaxed text-slate-100;
+  }
+  .markdown h1 {
+    @apply mb-4 mt-8 text-3xl font-extrabold;
+  }
+  .markdown h2 {
+    @apply mb-4 mt-8 text-2xl font-semibold;
+  }
+  .markdown h3 {
+    @apply mb-2 mt-4 text-xl font-semibold;
+  }
+  .markdown h4 {
+    @apply mb-1 mt-2 text-base font-medium;
+  }
+  .markdown a {
+    @apply text-orange-600 hover:underline;
+  }
+  .markdown pre {
+    @apply mx-auto my-3 rounded-lg border border-orange-600 !bg-orange-900/50 p-2 pl-3 font-mono shadow-xl sm:pt-2;
+  }
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  #content {
+    @apply scroll-mt-20;
+  }
+
+  /* only at less than md */
+  @media (max-width: 767.5px) {
+    .mobile-sidebar-toggle {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .mobile-sidebar-toggle #grid-left {
+      z-index: 20;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+}
+
+.heading-link::after {
+  content: "#";
+  padding-inline-start: 0.25em;
+  opacity: 0;
+  transition: all 0.3;
+  @apply cursor-pointer text-orange-600;
+}
+
+.heading-link:hover::after {
+  transition: all 0.3;
+  opacity: 1;
+}
+
+.heading-link {
+  text-decoration: none;
+  @apply cursor-text !text-slate-100;
+}
+
+.heading-link:hover {
+  @apply !no-underline;
+}
