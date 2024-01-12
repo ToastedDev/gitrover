@@ -1,4 +1,5 @@
-import { Separator, select as inquirerSelect } from "@inquirer/prompts";
+import type { Separator } from "@inquirer/prompts";
+import { select as inquirerSelect } from "@inquirer/prompts";
 
 type Choice<Value> = {
   value: Value;
@@ -11,7 +12,7 @@ type Choice<Value> = {
 /**
  * Better select that handles exiting better than just throwing an error.
  */
-export const select = async <Value extends unknown>(config: {
+export const select = async <Value>(config: {
   message: string | Promise<string> | (() => Promise<string>);
   choices: readonly (Separator | Choice<Value>)[];
   pageSize?: number | undefined;

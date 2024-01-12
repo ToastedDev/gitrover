@@ -21,13 +21,13 @@ export const browseCommand = new Command()
         error(
           "Failed to parse origin URL.\nThis probably means you don't have an",
           chalk.bold("origin"),
-          "branch."
+          "branch.",
         );
       process.exit(1);
     }
 
     const splitSource = url.replace("https://github.com/", "").split("/");
-    let owner = splitSource[0]!;
+    const owner = splitSource[0]!;
     const name = splitSource[1] ?? splitSource[0]!;
 
     const octokit = new Octokit();

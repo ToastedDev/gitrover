@@ -11,7 +11,7 @@ repoCommand
   .option(
     "-p, --push",
     "Create a repository on GitHub and push a local repository.",
-    false
+    false,
   )
   .description("Create a repository on GitHub.")
   .action(createRepoHandler);

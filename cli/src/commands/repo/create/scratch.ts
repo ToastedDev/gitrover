@@ -1,4 +1,4 @@
-import { Octokit } from "@octokit/rest";
+import type { Octokit } from "@octokit/rest";
 import { askForRepoInfo } from "./index.js";
 import chalk from "chalk";
 import { success } from "~/utils/logger.js";

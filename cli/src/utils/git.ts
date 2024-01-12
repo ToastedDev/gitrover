@@ -1,4 +1,5 @@
-import { ExecSyncOptions, exec, execSync } from "child_process";
+import type { ExecSyncOptions } from "child_process";
+import { exec, execSync } from "child_process";
 import { existsSync } from "fs";
 import { getUserConfig } from "./user-config.js";
 
@@ -7,7 +8,7 @@ export const execGitCommandSync = (args: string[], options?: ExecSyncOptions) =>
 
 export const execGitCommand = (
   args: string[],
-  callback?: Parameters<typeof exec>[1]
+  callback?: Parameters<typeof exec>[1],
 ) => exec("git " + args.join(" "), callback);
 
 export const isGitRepository = () => existsSync(".git");
@@ -33,7 +34,7 @@ export const convertOriginUrlToGitHubUrl = () => {
     .trim()
     .replace(".git", "")
     .match(
-      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/
+      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/,
     )?.[0];
 
   return urlMatch ? `https://github.com/${urlMatch}` : undefined;

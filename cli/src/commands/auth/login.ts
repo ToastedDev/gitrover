@@ -1,10 +1,7 @@
 import { GITHUB_CLIENT_ID } from "~/consts.js";
 import { createOAuthDeviceAuth } from "@octokit/auth-oauth-device";
-import {
-  UserConfig,
-  getUserConfig,
-  setUserConfig,
-} from "~/utils/user-config.js";
+import type { UserConfig } from "~/utils/user-config.js";
+import { getUserConfig, setUserConfig } from "~/utils/user-config.js";
 import chalk from "chalk";
 import open from "open";
 import { select } from "~/utils/select.js";
@@ -77,8 +74,8 @@ export const loginHandler = async () => {
         console.log(`Press ${chalk.bold("Enter")} to verify in your browser.`);
         console.log(
           `Or go to ${chalk.bold(
-            verification.verification_uri
-          )} in your browser yourself.`
+            verification.verification_uri,
+          )} in your browser yourself.`,
         );
         keypress(process.stdin);
         process.stdin.on("keypress", (_, key) => {
@@ -97,8 +94,8 @@ export const loginHandler = async () => {
       } else {
         console.log(
           `Go to ${chalk.bold(
-            verification.verification_uri
-          )} and enter the code shown above.`
+            verification.verification_uri,
+          )} and enter the code shown above.`,
         );
       }
     },
@@ -129,7 +126,7 @@ export const loginHandler = async () => {
       error(
         "SSH key",
         chalk.bold(path.join(sshDirectory, sshKeyToUpload)),
-        "already exists on your GitHub account."
+        "already exists on your GitHub account.",
       );
     } else {
       octokit.users.createPublicSshKeyForAuthenticatedUser({
@@ -139,7 +136,7 @@ export const loginHandler = async () => {
       success(
         "SSH key",
         chalk.bold(path.join(sshDirectory, sshKeyToUpload)),
-        "uploaded to your GitHub account."
+        "uploaded to your GitHub account.",
       );
     }
   }
