@@ -1,5 +1,21 @@
 # gitrover
 
+## 0.0.4
+
+### Patch Changes
+
+- 6077119: Add `browse` command.
+
+  ```bash
+  # open this repository on github
+  gr browse
+
+  # open cli/cli on github
+  gr browse cli/cli
+  ```
+
+- 110866b: Add version warning if your GitRover version is out of date.
+
 ## 0.0.3
 
 ### Patch Changes
