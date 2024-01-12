@@ -17,7 +17,7 @@ yarn add -g gitrover
 # pnpm
 pnpm add -g gitrover
 
-# bun (not tested)
+# bun
 bun add -g gitrover
 ```
 
