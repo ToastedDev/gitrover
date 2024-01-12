@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { getVersion } from "../utils/version.js";
-import { authCommands as authCommand } from "./auth/index.js";
+import { authCommand } from "./auth/index.js";
 import { repoCommand } from "./repo/index.js";
 
 export const commandHandler = async () => {
