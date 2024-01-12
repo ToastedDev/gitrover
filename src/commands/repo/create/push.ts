@@ -11,9 +11,6 @@ import { error, success } from "~/utils/logger.js";
 import { askForRepoInfo } from "./index.js";
 
 export const createAndPushHandler = async (octokit: Octokit) => {
-  // fix for dumb inquirer behaviours
-  process.on("exit", () => process.exit());
-
   // TODO: allow the user to select where the repo is if the current directory isn't a git repo
   if (!isGitRepository()) {
     error(

@@ -7,7 +7,7 @@ import {
 } from "~/utils/user-config.js";
 import chalk from "chalk";
 import open from "open";
-import { select } from "@inquirer/prompts";
+import { select } from "~/utils/select.js";
 import { getPublicKey, getPublicKeys, sshDirectory } from "~/utils/ssh.js";
 import { Octokit } from "@octokit/rest";
 import path from "path";

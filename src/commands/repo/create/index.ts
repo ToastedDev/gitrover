@@ -1,5 +1,5 @@
 import { getUserConfig } from "~/utils/user-config.js";
-import { input, select } from "@inquirer/prompts";
+import { input } from "@inquirer/prompts";
 import { Octokit } from "@octokit/rest";
 import { createAndPushHandler } from "./push.js";
 import { gitRepoHasOrigin, isGitRepository } from "~/utils/git.js";
@@ -7,14 +7,12 @@ import { error } from "~/utils/logger.js";
 import chalk from "chalk";
 import { createFromScratchHandler } from "./scratch.js";
 import path from "path";
+import { select } from "~/utils/select.js";
 
 export const createRepoHandler = async (flags: {
   scratch: boolean;
   push: boolean;
 }) => {
-  // fix for dumb inquirer behaviours
-  process.on("exit", () => process.exit());
-
   const config = await getUserConfig();
   if (!config.accessToken) {
     error(
@@ -39,11 +37,6 @@ export const createRepoHandler = async (flags: {
         name: "Create a new repository from scratch",
         value: "create-scratch",
       },
-      // TODO
-      // {
-      //   name: "Create a new repository from a template",
-      //   value: "create-template"
-      // }
       {
         name: "Create and push an existing local repository",
         value: "create-and-push",
