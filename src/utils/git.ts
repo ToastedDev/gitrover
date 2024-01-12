@@ -20,3 +20,21 @@ export const remoteUrl = async (repoOwner: string, repoName: string) => {
     return `git@github.com:${repoOwner}/${repoName}.git`;
   else return `https://github.com/${repoOwner}/${repoName}.git`;
 };
+
+export const convertOriginUrlToGitHubUrl = () => {
+  if (!gitRepoHasOrigin()) return undefined;
+
+  const originUrl = execGitCommandSync([
+    "remote",
+    "get-url",
+    "origin",
+  ]).toString();
+  const urlMatch = originUrl
+    .trim()
+    .replace(".git", "")
+    .match(
+      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/
+    )?.[0];
+
+  return urlMatch ? `https://github.com/${urlMatch}` : undefined;
+};

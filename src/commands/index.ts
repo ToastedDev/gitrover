@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { getVersion } from "../utils/version.js";
 import { authCommand } from "./auth/index.js";
 import { repoCommand } from "./repo/index.js";
+import { browseCommand } from "./browse.js";
 
 export const commandHandler = async () => {
   const program = new Command()
@@ -11,6 +12,7 @@ export const commandHandler = async () => {
 
   program.addCommand(authCommand);
   program.addCommand(repoCommand);
+  program.addCommand(browseCommand);
 
   program.parse(process.argv);
 };
