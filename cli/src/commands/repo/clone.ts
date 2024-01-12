@@ -6,7 +6,7 @@ import { error } from "~/utils/logger.js";
 
 export const cloneRepoHandler = async (
   source: string,
-  destination: string | undefined
+  destination: string | undefined,
 ) => {
   const config = await getUserConfig();
 

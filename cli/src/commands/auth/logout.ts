@@ -8,7 +8,7 @@ export const logoutHandler = async () => {
   if (!config.accessToken) {
     error(
       "You're not logged in.\nTo login, run",
-      chalk.bold("gr auth login") + "."
+      chalk.bold("gr auth login") + ".",
     );
     process.exit(1);
   }
@@ -20,7 +20,9 @@ export const logoutHandler = async () => {
     });
     const { data } = await octokit.rest.users.getAuthenticated();
     username = data.login;
-  } catch {}
+  } catch {
+    // do nothing
+  }
   await setUserConfig({ accessToken: undefined });
   success(username ? `Logged out of ${username}.` : "Logged out.");
 };

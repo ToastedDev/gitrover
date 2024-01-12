@@ -14,7 +14,8 @@ jobs:
           version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run lint && pnpm run build
+      - run: pnpm run lint
+      - run: pnpm run typecheck

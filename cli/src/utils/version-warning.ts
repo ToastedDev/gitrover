@@ -13,12 +13,12 @@ export const renderVersionWarning = (npmVersion: string) => {
       "Your version:",
       chalk.bold(currentVersion) + " -",
       "Latest version:",
-      chalk.bold(npmVersion)
+      chalk.bold(npmVersion),
     );
     console.log(
       "Please run",
       chalk.bold("npm install -g gitrover@latest"),
-      "to get the latest updates."
+      "to get the latest updates.",
     );
     console.log("");
   }

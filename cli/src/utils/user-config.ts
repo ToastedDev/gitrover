@@ -20,7 +20,7 @@ export const getUserConfig = async (): Promise<UserConfig> => {
   if (!exists(configPath)) await writeFile(configPath, "{}");
   return Object.assign(
     defaultConfig,
-    JSON.parse(await readFile(configPath, "utf8"))
+    JSON.parse(await readFile(configPath, "utf8")),
   );
 };
 

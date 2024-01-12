@@ -1,5 +1,5 @@
 import { confirm, input } from "@inquirer/prompts";
-import { Octokit } from "@octokit/rest";
+import type { Octokit } from "@octokit/rest";
 import chalk from "chalk";
 import {
   gitRepoHasOrigin,
@@ -15,7 +15,7 @@ export const createAndPushHandler = async (octokit: Octokit) => {
   if (!isGitRepository()) {
     error(
       "You are not in a git repository.\nInitialize a git repository with",
-      chalk.bold("git init") + "."
+      chalk.bold("git init") + ".",
     );
     process.exit(1);
   }
@@ -48,7 +48,7 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     if (!shouldStillAddRemote) {
       error(
         "Cancelled creating a remote.\nIf you want to create the remote yourself, you can run",
-        chalk.bold("git remote add") + "."
+        chalk.bold("git remote add") + ".",
       );
       process.exit(1);
     }

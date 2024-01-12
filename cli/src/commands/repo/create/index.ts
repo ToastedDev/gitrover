@@ -17,7 +17,7 @@ export const createRepoHandler = async (flags: {
   if (!config.accessToken) {
     error(
       "You're not logged in.\nTo login, run",
-      chalk.bold("gr auth login") + "."
+      chalk.bold("gr auth login") + ".",
     );
     process.exit(1);
   }
