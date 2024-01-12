@@ -10,7 +10,6 @@
     "build": "turbo build",
     "build:cli": "turbo --filter=gitrover build",
     "build:web": "turbo --filter=web build",
-    "release": "cd cli && pnpm release",
     "dev": "turbo dev",
     "dev:cli": "turbo --filter=gitrover dev",
     "dev:web": "turbo --filter=web dev",
