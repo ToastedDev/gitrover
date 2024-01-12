@@ -19,7 +19,8 @@
     "typecheck": "turbo typecheck",
     "typecheck:cli": "turbo --filter=gitrover typecheck",
     "typecheck:web": "turbo --filter=web typecheck",
-    "cli": "cd cli && node ."
+    "cli": "cd cli && node .",
+    "release": "pnpm run build && changeset publish"
   },
   "keywords": [],
   "author": "ToastedToast <hey@toasted.dev>",
