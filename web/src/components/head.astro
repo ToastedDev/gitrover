@@ -1,4 +1,6 @@
 ---
+import colors from 'tailwindcss/colors'
+
 interface Props {
   title?: string
 }
@@ -14,6 +16,7 @@ const description = "The better GitHub CLI."
   <meta name="generator" content={Astro.generator} />
   <title>{seoTitle}</title>
   <meta name="description" content={description} />
+  <meta name="theme-color" content={colors.orange[600]} />
   <meta property="og:title" content={seoTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content="https://gr.toasted.dev" />
