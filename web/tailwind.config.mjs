@@ -1,5 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import typography from "@tailwindcss/typography";
+import scrollbar from "tailwind-scrollbar";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -16,5 +17,5 @@ export default {
       },
     },
   },
-  plugins: [typography],
+  plugins: [typography, scrollbar({ nocompatible: true })],
 };

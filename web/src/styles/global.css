@@ -7,6 +7,19 @@
 }
 
 @layer base {
+  html,
+  .gr-scrollbar {
+    @apply scrollbar-thin scrollbar-track-orange-950 scrollbar-thumb-orange-700;
+  }
+  html::-webkit-scrollbar-thumb,
+  .gr-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+  }
+  html::-webkit-scrollbar-thumb:hover,
+  .gr-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply scrollbar-thumb-orange-700/80;
+  }
+
   .markdown {
     @apply flex w-full flex-col items-start justify-start leading-relaxed text-slate-100;
   }
