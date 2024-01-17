@@ -1,13 +1,13 @@
 ---
-import colors from 'tailwindcss/colors'
+import colors from "tailwindcss/colors";
 
 interface Props {
-  title?: string
+  title?: string;
 }
 
 const { title } = Astro.props;
-const seoTitle = title ? `${title} — GitRover` : "GitRover"
-const description = "The better GitHub CLI."
+const seoTitle = title ? `${title} — GitRover` : "GitRover";
+const description = "The better GitHub CLI.";
 ---
 
 <head>
@@ -28,8 +28,8 @@ const description = "The better GitHub CLI."
   <meta name="twitter:title" content={seoTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://gr.toasted.dev/logo.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 </head>

@@ -5,41 +5,87 @@ import ArrowRightIcon from "../components/icons/arrow-right.astro";
 ---
 
 <Layout>
-  <div class="p-4 text-center flex flex-col items-center justify-center gap-5 min-h-[calc(100vh-4rem)] bg-gradient-to-b from-orange-950 to-orange-900/50">
+  <div
+    class="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-5 bg-gradient-to-b from-orange-950 to-orange-900/50 p-4 text-center"
+  >
     <div class="flex flex-col items-center justify-center gap-1">
-      <h1 class="text-6xl font-bold [text-wrap:balance]">The <span class="text-orange-600">better</span> GitHub CLI</h1>
+      <h1 class="text-6xl font-bold [text-wrap:balance]">
+        The <span class="text-orange-600">better</span> GitHub CLI
+      </h1>
       <p>No more spamming enter, no more stupid questions. Just run and go.</p>
-      <div class="p-0.5" /> 
+      <div class="p-0.5"></div>
       <div class="flex items-center gap-1.5">
-        <a href="/docs/installation" class="px-4 py-2 bg-orange-700 hover:bg-orange-700/80 rounded-full font-medium flex items-center gap-1">
+        <a
+          href="/docs/installation"
+          class="flex items-center gap-1 rounded-full bg-orange-700 px-4 py-2 font-medium hover:bg-orange-700/80"
+        >
           Get started
-          <ArrowRightIcon class="w-4 h-4" />
+          <ArrowRightIcon class="h-4 w-4" />
         </a>
-        <a href="https://github.com/ToastedDev/gitrover" target="_blank" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full flex items-center gap-1.5 font-medium">
+        <a
+          href="https://github.com/ToastedDev/gitrover"
+          target="_blank"
+          class="flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-2 font-medium hover:bg-white/20"
+        >
           GitHub
-          <GitHubIcon class="w-4 h-4" />
+          <GitHubIcon class="h-4 w-4" />
         </a>
       </div>
     </div>
-    <div class="bg-orange-900/50 rounded-lg grid grid-cols-1 divide-y divide-orange-800 border border-orange-800 md:grid-cols-2 md:divide-x md:divide-y-0">
-      <code class="px-3 py-2 text-left max-w-md md:max-w-96">
+    <div
+      class="grid grid-cols-1 divide-y divide-orange-800 rounded-lg border border-orange-800 bg-orange-900/50 md:grid-cols-2 md:divide-x md:divide-y-0"
+    >
+      <code class="max-w-md px-3 py-2 text-left md:max-w-96">
         <p><span class="text-orange-600">$</span> gr repo create</p>
-        <p><span class="text-green-500">?</span> Repository name <span class="text-cyan-500">gitrover</span></p>
-        <p><span class="text-green-500">?</span> Visibility <span class="text-cyan-500">Public</span></p>
-        <p><span class="text-green-500">✓</span> Created repository <b>ToastedDev/gitrover</b>.</p>
-        <p><span class="text-green-500">✓</span> Pushed commits to repository <b>ToastedDev/gitrover</b>.</p>
+        <p>
+          <span class="text-green-500">?</span> Repository name <span
+            class="text-cyan-500">gitrover</span>
+        </p>
+        <p>
+          <span class="text-green-500">?</span> Visibility <span
+            class="text-cyan-500">Public</span>
+        </p>
+        <p>
+          <span class="text-green-500">✓</span> Created repository <b
+            >ToastedDev/gitrover</b
+          >.
+        </p>
+        <p>
+          <span class="text-green-500">✓</span> Pushed commits to repository <b
+            >ToastedDev/gitrover</b
+          >.
+        </p>
       </code>
-      <code class="px-3 py-2 text-left max-w-md md:max-w-96">
+      <code class="max-w-md px-3 py-2 text-left md:max-w-96">
         <p><span class="text-orange-600">$</span> gh repo create</p>
-        <p><span class="text-green-500">?</span> What would you like to do? <span class="text-cyan-500">Push an existing local repository on GitHub</span></p>
-        <p><span class="text-green-500">?</span> Path to local repository <span class="text-cyan-500">.</span></p>
-        <p><span class="text-green-500">?</span> Repository name <span class="text-cyan-500">gitrover</span></p>
+        <p>
+          <span class="text-green-500">?</span> What would you like to do? <span
+            class="text-cyan-500"
+            >Push an existing local repository on GitHub</span>
+        </p>
+        <p>
+          <span class="text-green-500">?</span> Path to local repository <span
+            class="text-cyan-500">.</span>
+        </p>
+        <p>
+          <span class="text-green-500">?</span> Repository name <span
+            class="text-cyan-500">gitrover</span>
+        </p>
         <p><span class="text-green-500">?</span> Description</p>
-        <p><span class="text-green-500">?</span> Visibility <span class="text-cyan-500">Public</span></p>
-        <p><span class="text-green-500">✓</span> Created repository ToastedDev/gitrover on GitHub</p>
-        <p><span class="text-green-500">?</span> Add a remote? <span class="text-cyan-500">Yes</span></p>
+        <p>
+          <span class="text-green-500">?</span> Visibility <span
+            class="text-cyan-500">Public</span>
+        </p>
+        <p>
+          <span class="text-green-500">✓</span> Created repository ToastedDev/gitrover
+          on GitHub
+        </p>
+        <p>
+          <span class="text-green-500">?</span> Add a remote? <span
+            class="text-cyan-500">Yes</span>
+        </p>
         <p class="text-orange-600"># ...you get the point</p>
       </code>
-    </div> 
+    </div>
   </div>
 </Layout>

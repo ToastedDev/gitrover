@@ -3,16 +3,16 @@ import "../styles/global.css";
 import "@fontsource/inter/variable.css";
 import "@fontsource/jetbrains-mono/variable.css";
 
-import Head from '../components/head.astro'
-import Navbar from '../components/navbar.astro'
+import Head from "../components/head.astro";
+import Navbar from "../components/navbar.astro";
 ---
 
 <html lang="en">
   <Head />
-	<body class="bg-orange-950 text-slate-100">
-	 	<Navbar class="max-w-7xl mx-auto" isLanding />
+  <body class="bg-orange-950 text-slate-100">
+    <Navbar class="mx-auto max-w-7xl" isLanding />
     <main>
       <slot />
     </main>
-	</body>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 ---
-import GitHubIcon from './github.astro'
-import SidebarToggle from './sidebar-toggle.astro';
+import GitHubIcon from "./github.astro";
+import SidebarToggle from "./sidebar-toggle.astro";
 
 interface Props {
   sticky?: true;
@@ -8,22 +8,40 @@ interface Props {
   class?: string;
 }
 
-const { pathname } = Astro.url
+const { pathname } = Astro.url;
 const { sticky, class: className, isLanding } = Astro.props;
 ---
 
-<header class:list={["px-4 py-3 h-16 flex items-center justify-between bg-orange-950", sticky && "sticky top-0 z-40", className]}>
+<header
+  class:list={[
+    "flex h-16 items-center justify-between bg-orange-950 px-4 py-3",
+    sticky && "sticky top-0 z-40",
+    className,
+  ]}
+>
   <nav class="flex items-center gap-2">
     <a href="/" class="hover:opacity-75">
-      <img src="/logo.png" alt="GitRover Logo" width={42} height={42} class="rounded-full">
+      <img
+        src="/logo.png"
+        alt="GitRover Logo"
+        width={42}
+        height={42}
+        class="rounded-full"
+      />
     </a>
-    <a href="/docs" class:list={["font-medium px-3 py-2 rounded-md hover:text-orange-600 border border-transparent hover:!border-orange-700 hover:bg-orange-900/50", pathname.startsWith("/docs") && "bg-orange-900/50 !border-orange-700/50"]}>
-      Docs 
+    <a
+      href="/docs"
+      class:list={[
+        "rounded-md border border-transparent px-3 py-2 font-medium hover:!border-orange-700 hover:bg-orange-900/50 hover:text-orange-600",
+        pathname.startsWith("/docs") &&
+          "!border-orange-700/50 bg-orange-900/50",
+      ]}
+    >
+      Docs
     </a>
   </nav>
   <div class="flex items-center gap-2">
     <GitHubIcon />
     {!isLanding && <SidebarToggle />}
   </div>
-</header>	
-
+</header>
