@@ -11,9 +11,7 @@ const pages = await getCollection("docs");
 const allCategories = await getCollection("category");
 const { headings, slug } = Astro.props;
 
-function categorize(
-  pages: CollectionEntry<"docs">[],
-): {
+function categorize(pages: CollectionEntry<"docs">[]): {
   category: CollectionEntry<"category"> | undefined;
   pages: CollectionEntry<"docs">[];
 }[] {
@@ -75,7 +73,7 @@ const basePadding = 14;
                         : `/docs/${page.slug}`
                     }
                     class:list={[
-                      "inline-block w-full border-l-[1.5px] py-[1px] hover:text-orange-600",
+                      "inline-block w-full border-l-[1.5px] py-[1px] hover:text-orange-600 hover:underline",
                       page.slug === slug
                         ? "border-orange-600 font-semibold"
                         : "border-orange-900 hover:border-orange-600",
@@ -89,7 +87,7 @@ const basePadding = 14;
                       {headings.map((heading) => (
                         <a
                           href={`#${heading.slug}`}
-                          class="inline-block w-full border-l-[1.5px] border-orange-900 py-[1px] data-[active=true]:border-orange-600 data-[active=true]:text-orange-600 hover:border-orange-600 hover:text-orange-600"
+                          class="inline-block w-full border-l-[1.5px] border-orange-900 py-[1px] data-[active=true]:border-orange-600 data-[active=true]:text-orange-600 hover:border-orange-600 hover:text-orange-600 hover:underline"
                           style={{
                             paddingLeft: `${basePadding * heading.depth}px`,
                           }}
