@@ -6,7 +6,7 @@
       "persistent": false
     },
     "build": {
-      "outputs": ["dist", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".astro/**"]
     },
     "lint": {},
     "typecheck": {}
