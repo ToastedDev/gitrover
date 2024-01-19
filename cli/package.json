@@ -1,6 +1,6 @@
 {
   "name": "gitrover",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The better GitHub CLI we all needed",
   "main": "./dist/index.js",
   "bin": {
