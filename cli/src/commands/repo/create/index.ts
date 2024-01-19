@@ -117,6 +117,6 @@ export const askForRepoInfo = async (octokit: Octokit) => {
       inOrg: owner === currentUser.login,
     };
   } catch (err) {
-    handleInquirerErrors(err);
+    return handleInquirerErrors(err);
   }
 };
