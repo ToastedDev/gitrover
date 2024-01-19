@@ -9,8 +9,9 @@ import {
 } from "~/utils/git.js";
 import { error, success } from "~/utils/logger.js";
 import { askForRepoInfo } from "./index.js";
+import { handler } from "~/utils/command.js";
 
-export const createAndPushHandler = async (octokit: Octokit) => {
+export const createAndPushHandler = handler(async (octokit: Octokit) => {
   // TODO: allow the user to select where the repo is if the current directory isn't a git repo
   if (!isGitRepository()) {
     error(
@@ -20,7 +21,7 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     process.exit(1);
   }
 
-  const { owner, name, visibility, inOrg } = await askForRepoInfo(octokit);
+  const { owner, name, visibility, inOrg } = (await askForRepoInfo(octokit))!;
 
   if (!inOrg) {
     await octokit.repos.createInOrg({
@@ -74,4 +75,4 @@ export const createAndPushHandler = async (octokit: Octokit) => {
     stdio: "ignore",
   });
   success(`Pushed commits to repository ${chalk.bold(`${owner}/${name}`)}.`);
-};
+});

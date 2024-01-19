@@ -4,7 +4,7 @@ import type { UserConfig } from "~/utils/user-config.js";
 import { getUserConfig, setUserConfig } from "~/utils/user-config.js";
 import chalk from "chalk";
 import open from "open";
-import { select } from "~/utils/select.js";
+import { select } from "@inquirer/prompts";
 import { getPublicKey, getPublicKeys, sshDirectory } from "~/utils/ssh.js";
 import { Octokit } from "@octokit/rest";
 import path from "path";
