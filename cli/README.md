@@ -23,6 +23,6 @@ bun add -g gitrover
 
 ## Credits
 
-- [Theo Browne](https://github.com/t3dotgg) - Inspiring this project by [making a video complaining about GitHub's CLI](https://www.youtube.com/live/qUo1cvLzOCA?t=14547&si=w5TBpboP7vS8caJj)
+- [Theo Browne](https://github.com/t3dotgg) - Inspiring this project by [making a video complaining about GitHub's CLI](https://www.youtube.com/watch?v=qOCEQvxoKKk)
 
 - [GitHub](https://github.com) - Inspiration for some of how this works (not all, because most of its stupid, as mentioned by Theo)
