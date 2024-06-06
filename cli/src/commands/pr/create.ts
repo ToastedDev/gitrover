@@ -79,7 +79,9 @@ export const createPrHandler = handler(async () => {
     .split("\n")
     .filter((branch) => branch.includes("remotes/origin/"));
   if (!branches.length) {
-    execGitCommandSync(["push", "--set-upstream", "origin", currentBranch]);
+    execGitCommandSync(["push", "--set-upstream", "origin", currentBranch], {
+      stdio: "ignore",
+    });
     success("Pushed branch to remote origin.");
   }
 
