@@ -66,6 +66,7 @@ export const createPrHandler = handler(async () => {
   });
   const isDraft = await confirm({
     message: "Is this a draft pull request?",
+    default: false,
   });
 
   const branches = execGitCommandSync([
