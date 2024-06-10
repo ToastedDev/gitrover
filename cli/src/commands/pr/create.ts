@@ -35,7 +35,16 @@ export const createPrHandler = handler(async () => {
     auth: config.accessToken,
   });
 
-  const [repoOwner, repoName] = getRepoFromOrigin()!;
+  let [repoOwner, repoName] = getRepoFromOrigin()!;
+  const { data: repo } = await octokit.repos.get({
+    owner: repoOwner,
+    repo: repoName,
+  });
+  if (repo.fork) {
+    repoOwner = repo.parent!.owner.login;
+    repoName = repo.parent!.name;
+  }
+
   const currentBranch = execGitCommandSync([
     "rev-parse",
     "--abbrev-ref",
