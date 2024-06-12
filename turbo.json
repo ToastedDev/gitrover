@@ -1,12 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "dev": {
       "cache": false,
       "persistent": false
     },
     "build": {
-      "outputs": ["dist/**", ".astro/**"]
+      "outputs": [
+        "dist/**",
+        ".astro/**"
+      ]
     },
     "lint": {},
     "typecheck": {}
