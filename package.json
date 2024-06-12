@@ -19,7 +19,7 @@
     "typecheck": "turbo typecheck",
     "typecheck:cli": "turbo --filter=gitrover typecheck",
     "typecheck:web": "turbo --filter=web typecheck",
-    "cli": "pnpm run build:cli && cd cli && node .",
+    "cli": "pnpm run build:cli && node cli",
     "release": "pnpm run build && changeset publish"
   },
   "keywords": [],
