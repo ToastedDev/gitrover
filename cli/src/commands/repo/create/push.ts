@@ -6,6 +6,7 @@ import {
   isGitRepository,
   remoteUrl,
   execGitCommandSync,
+  gitRepoHasCommits,
 } from "~/utils/git.js";
 import { error, success } from "~/utils/logger.js";
 import { askForRepoInfo } from "./index.js";
@@ -110,7 +111,14 @@ export const createAndPushHandler = handler(async (octokit: Octokit) => {
     { cwd },
   );
 
-  // TODO: check if repo has commits, and don't push if no commits
+  if (!gitRepoHasCommits()) {
+    error(
+      "It seems you don't have any commits yet.\nYou can push commits yourself with",
+      chalk.bold(`git push --set-upstream ${remoteName} HEAD`) + ".",
+    );
+    process.exit(1);
+  }
+
   execGitCommandSync(["push", "--set-upstream", remoteName, "HEAD"], {
     stdio: "ignore",
     cwd,

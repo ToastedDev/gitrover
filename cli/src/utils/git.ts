@@ -19,6 +19,21 @@ export const gitRepoHasOrigin = (cwd?: string) =>
   execGitCommandSync(["remote", "show"], { encoding: "utf8", cwd }).length !==
   0;
 
+export function gitRepoHasCommits(cwd?: string) {
+  try {
+    return (
+      execGitCommandSync(["rev-list", "--count", "HEAD"], {
+        encoding: "utf8",
+        cwd,
+      })
+        .toString()
+        .trim() !== "0"
+    );
+  } catch (err) {
+    return false;
+  }
+}
+
 export const remoteUrl = async (repoOwner: string, repoName: string) => {
   const config = await getUserConfig();
   if (config.protocol === "ssh")
