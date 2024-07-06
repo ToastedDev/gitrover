@@ -1,8 +1,0 @@
----
-import { getEntry } from "astro:content";
-import Layout from "./[...slug].astro";
-
-const entry = await getEntry("docs", "introduction");
----
-
-<Layout {entry} />
