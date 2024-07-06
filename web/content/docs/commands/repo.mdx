@@ -1,0 +1,42 @@
+---
+title: repo
+---
+
+Manage your GitHub repository.
+
+```bash
+gr repo [subcommand]
+```
+
+- [`gr repo create`](#create) - Create a repository on GitHub.
+- [`gr repo clone`](#clone) - Clone a GitHub repository.
+
+## create
+
+Create a repository on GitHub.
+
+```bash
+gr repo create
+```
+
+### Flags
+
+#### `-s, scratch`
+
+Create a repository on GitHub from scratch.
+
+
+#### `-p, --push`
+
+Create a repository on GitHub and push a local repository.
+
+## clone
+
+Clone a GitHub repository.
+
+```bash
+gr repo clone [source] [destination]
+```
+
+- **source**: The source repository to clone.
+- **destination**: The destination directory to clone the repository to. If not specified, the repository will be cloned to a directory with the same name as the repository.

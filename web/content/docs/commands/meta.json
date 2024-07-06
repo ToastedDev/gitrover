@@ -1,0 +1,9 @@
+{
+  "title": "Commands",
+  "pages": [
+    "auth",
+    "browse",
+    "pr",
+    "repo"
+  ]
+}
