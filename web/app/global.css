@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: 21 100% 89.8% !important;
+  --secondary: 21 100% 95.8% !important;
+  --popover: 21 100% 94% !important;
+  --primary: 21 90% 48% !important;
+  --border: 21 90% 86% !important;
+  --muted: 21 90% 83% !important;
+  --accent: 25 80% 85.8% !important;
+  --card: 21 100% 92.8% !important;
+}
+
+.dark {
+  --background: 21 90% 12% !important;
+  --secondary: 21 30% 36.3% !important;
+  --popover: 21 90% 15% !important;
+  --primary: 21 90% 50% !important;
+  --border: 21 90% 20% !important;
+  --muted: 21 50% 28% !important;
+  --muted-foreground: 21 60% 75% !important;
+  --accent: 21 35% 32% !important;
+  --card: 21 90% 16% !important;
+}
