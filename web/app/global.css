@@ -13,6 +13,10 @@
   --card: 21 100% 92.8% !important;
 }
 
+.prose a:not(.group) {
+  --tw-prose-links: hsl(var(--primary));
+}
+
 .dark {
   --background: 21 90% 12% !important;
   --secondary: 21 60% 25% !important;

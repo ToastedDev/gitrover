@@ -1,0 +1,48 @@
+---
+title: Getting Started
+---
+
+## Installation
+
+GitRover publishes itself as a package on the [npm registry](https://npmjs.com). To install it, run the following command in your terminal:
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+<Tabs id="package-manager" items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="NPM">
+  ```bash
+  npm install -g gitrover
+  ```
+  </Tab>
+  <Tab value="Yarn">
+  ```bash
+  yarn add -g gitrover
+  ```
+  </Tab>
+  <Tab value="PNPM">
+  ```bash
+  pnpm add -g gitrover
+  ```
+  </Tab>
+  <Tab value="Bun">
+  ```bash
+  bun add -g gitrover
+  ```
+  </Tab>
+</Tabs>
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout title="Note" type="info">
+  If you are using something like <a href="https://ohmyz.sh/">Oh My Zsh</a> to add custom shorthands for git commands, or you have your own custom aliases, you may need to remove the `gr` alias.
+</Callout>
+
+## Logging in
+
+To log into GitRover with your GitHub account, run the following command in your terminal:
+
+```bash
+gr auth login
+```
+
+This will ask you a few questions about how you want to login, and then it will open a browser window to authenticate with GitHub.

@@ -19,7 +19,9 @@ export default async function Page({
   return (
     <DocsPage toc={page.data.exports.toc} full={page.data.full}>
       <DocsBody>
-        <h1>{page.data.title}</h1>
+        <h1 className="text-4xl font-bold text-foreground sm:text-4xl">
+          {page.data.title}
+        </h1>
         <MDX />
       </DocsBody>
     </DocsPage>
