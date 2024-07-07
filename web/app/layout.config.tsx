@@ -5,6 +5,7 @@ import Logo from "@/public/logo.png";
 
 // shared configuration
 export const baseOptions: BaseLayoutProps = {
+  githubUrl: "https://github.com/ToastedDev/gitrover",
   nav: {
     title: (
       <div className="flex items-center gap-1.5">
@@ -13,6 +14,18 @@ export const baseOptions: BaseLayoutProps = {
       </div>
     ),
   },
+  links: [
+    {
+      text: "Docs",
+      url: "/docs",
+    },
+  ],
+};
+
+// docs layout configuration
+export const docsOptions: DocsLayoutProps = {
+  ...baseOptions,
+  githubUrl: undefined,
   links: [
     {
       text: "GitHub",
@@ -24,10 +37,5 @@ export const baseOptions: BaseLayoutProps = {
       ),
     },
   ],
-};
-
-// docs layout configuration
-export const docsOptions: DocsLayoutProps = {
-  ...baseOptions,
   tree: pageTree,
 };
