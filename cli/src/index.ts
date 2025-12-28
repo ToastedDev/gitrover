@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import "isomorphic-unfetch";
 import { Effect, Layer } from "effect";
 import { Command } from "@effect/cli";
 import { NodeContext, NodeRuntime } from "@effect/platform-node";
