@@ -9,7 +9,7 @@ export const execGitCommandSync = (args: string[], options?: ExecSyncOptions) =>
 
 export const execGitCommand = (
   args: string[],
-  callback?: Parameters<typeof exec>[1],
+  callback?: Parameters<typeof exec>[1]
 ) => exec("git " + args.join(" "), callback);
 
 export const isGitRepository = (cwd?: string) =>
@@ -54,7 +54,7 @@ export const getRepoFromOrigin = () => {
     .trim()
     .replace(".git", "")
     .match(
-      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/,
+      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/
     )?.[0];
   return urlMatch ? (urlMatch.split("/") as [string, string]) : undefined;
 };
@@ -67,7 +67,7 @@ export const convertOriginUrlToGitHubUrl = () => {
     .trim()
     .replace(".git", "")
     .match(
-      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/,
+      /((?<=git@github.com:)(.*)\/(.*)|(?<=https?:\/\/github.com\/)(.*)\/(.*))/
     )?.[0];
 
   return urlMatch ? `https://github.com/${urlMatch}` : undefined;
