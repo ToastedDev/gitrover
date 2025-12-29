@@ -1,10 +1,19 @@
+import { FileSystem } from "@effect/platform";
+import { Effect, Schema } from "effect";
 import path from "path";
-import fs from "fs-extra";
-import type { PackageJson } from "type-fest";
-import { PKG_ROOT } from "../consts.js";
+import { PKG_ROOT } from "~/consts.js";
 
-export const getVersion = () => {
-  const packageJsonPath = path.join(PKG_ROOT, "package.json");
-  const packageJsonContent = fs.readJSONSync(packageJsonPath) as PackageJson;
-  return packageJsonContent.version ?? "1.0.0";
-};
+const PackageJson = Schema.compose(
+  Schema.parseJson(),
+  Schema.Struct({
+    version: Schema.String,
+  })
+);
+const PACKAGE_JSON_PATH = path.join(PKG_ROOT, "package.json");
+
+export const getVersion = Effect.fn("getVersion")(function* () {
+  const fs = yield* FileSystem.FileSystem;
+  const packageJsonContent = yield* fs.readFileString(PACKAGE_JSON_PATH);
+  const packageJson = yield* Schema.decode(PackageJson)(packageJsonContent);
+  return packageJson.version;
+});

@@ -7,16 +7,22 @@ import { BrowseCommand } from "./commands/browse.js";
 import { GitClient } from "./services/git.js";
 import { GithubClient } from "./services/github.js";
 import { cliLogger } from "./utils/logger.js";
+import { getVersion } from "./utils/version.js";
 
-const MainCommand = Command.make("gitrover").pipe(
-  Command.withSubcommands([BrowseCommand])
-);
+const cli = (args: readonly string[]) =>
+  Effect.gen(function* () {
+    const MainCommand = Command.make("gitrover").pipe(
+      Command.withSubcommands([BrowseCommand])
+    );
 
-const cli = Command.run(MainCommand, {
-  name: "gitrover",
-  version: "0.1.0",
-  executable: "gitrover",
-});
+    const cli = Command.run(MainCommand, {
+      name: "gitrover",
+      version: yield* getVersion(),
+      executable: "gitrover",
+    });
+
+    return yield* cli(args);
+  });
 
 const MainLayer = Layer.mergeAll(
   GitClient.Default,
