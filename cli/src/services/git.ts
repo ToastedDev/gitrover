@@ -2,7 +2,9 @@ import { NodeContext } from "@effect/platform-node";
 import { Data, Effect } from "effect";
 import { Command, CommandExecutor } from "@effect/platform";
 
-export class NoOriginError extends Data.TaggedError("NoOriginError") {}
+export class NoOriginError extends Data.TaggedError("NoOriginError") {
+  override message = "No remote named `origin` was found.";
+}
 
 export class GitClient extends Effect.Service<GitClient>()(
   "@gitrover/GitClient",
